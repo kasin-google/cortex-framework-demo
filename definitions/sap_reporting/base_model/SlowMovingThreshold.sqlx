@@ -1,0 +1,12 @@
+config {
+  type: "view", // Creates a view in BigQuery. Try changing to "table" instead.
+  columns: {
+    test: "A description for the test column", // Column descriptions are pushed to BigQuery.
+  }
+}
+SELECT
+  SlowMovingThreshold.MANDT AS Client_MANDT,
+  SlowMovingThreshold.MTART AS MaterialType_MTART,
+  SlowMovingThreshold.threshold_value AS ThresholdValue
+FROM
+  ${ref("slow_moving_threshold")} AS SlowMovingThreshold

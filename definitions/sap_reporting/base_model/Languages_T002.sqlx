@@ -1,0 +1,15 @@
+-- Config blocks allow you to configure, document, and test your data assets.
+config {
+  type: "view", // Creates a view in BigQuery. Try changing to "table" instead.
+  columns: {
+    test: "A description for the test column", // Column descriptions are pushed to BigQuery.
+  }
+}
+
+SELECT
+  T002.SPRAS AS LanguageKey_SPRAS,
+  T002.LASPEZ AS LanguageSpecifications_LASPEZ,
+  T002.LAHQ AS DegreeOfTranslationOfLanguage_LAHQ,
+  T002.LAISO AS TwoCharacterSapLanguageCode_LAISO
+FROM 
+  ${ref("t002")} AS t002

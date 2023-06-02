@@ -1,0 +1,15 @@
+config {
+  type: "view", // Creates a view in BigQuery. Try changing to "table" instead.
+  columns: {
+    test: "A description for the test column", // Column descriptions are pushed to BigQuery.
+  }
+}
+SELECT
+  StockCharacteristicsConfig.MANDT AS Client_MANDT,
+  StockCharacteristicsConfig.INSMK AS StockType_INSMK,
+  StockCharacteristicsConfig.SHKZG AS Debit_CreditIndicator_SHKZG,
+  StockCharacteristicsConfig.SOBKZ AS SpecialStockIndicator_SOBKZ,
+  StockCharacteristicsConfig.BWART AS MovementType_BWART,
+  StockCharacteristicsConfig.Stock_Characteristic AS StockCharacteristic
+FROM
+  ${ref("stock_characteristics_config")} AS StockCharacteristicsConfig
