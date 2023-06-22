@@ -1,6 +1,0 @@
-    config {
-      type: "declaration",
-      database: "kasin-450-2023060202544600",
-      schema: "SAP_CDC_PROCESSED",
-      name: "mbewh",
-    }

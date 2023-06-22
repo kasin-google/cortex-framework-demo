@@ -3,6 +3,10 @@
   "assertionSchema": "dataform_assertions",
   "warehouse": "bigquery",
   "defaultDatabase": "kasin-450-2023060202544600",
-  "defaultLocation": "us"
+  "defaultLocation": "us",
+  "vars":{
+    "mode": "N",
+    "table_type": "table"
+  }
 }
     

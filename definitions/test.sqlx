@@ -1,0 +1,30 @@
+config {
+  type: "incremental",
+}
+
+pre_operations {
+  TRUNCATE TABLE ${self()};
+}
+
+SELECT
+  1 as field1, 2 as org_id, current_time() as timestamp
+##to do --> add where clause to filter the right records to MERGE on each incremental run
+--${when(incremental(), `WHERE timestamp > (SELECT MAX(timestamp) FROM ${self()})`) }
+
+
+post_operations {
+  CREATE OR REPLACE ROW ACCESS POLICY admin_access
+  ON ${self()}
+  GRANT TO ('user:admin@kasin.altostrat.com')
+  FILTER USING (TRUE);
+  
+  CREATE OR REPLACE ROW ACCESS POLICY service_account_access
+  ON ${self()}
+  GRANT TO ('serviceAccount:service-278407373058@gcp-sa-dataform.iam.gserviceaccount.com')
+  FILTER USING (TRUE);
+
+  CREATE OR REPLACE ROW ACCESS POLICY test_filter
+  ON ${self()}
+  GRANT TO ('user:kasin@google.com')
+  FILTER USING (org_id = 2);  
+}
