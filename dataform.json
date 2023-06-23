@@ -6,7 +6,10 @@
   "defaultLocation": "us",
   "vars":{
     "mode": "N",
-    "table_type": "table"
+    "table_type": "table",
+    "project_id_tgt": "kasin-450-2023060202544600",
+    "dataset_reporting_tgt": "SAP_REPORTING",
+    "dataset_cdc_processed_ecc": "SAP_CDC_PROCESSED"
   }
 }
     

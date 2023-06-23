@@ -29,4 +29,4 @@ SELECT
   --   t001l.OIB_TNKASSIGN AS SiloManagementTankAssignmentIndicator_OIB_TNKASSIGN,
   t001l.LGOBE AS StorageLocationText_LGOBE
 FROM
-  `kasin-450-2023060202544600.SAP_CDC_PROCESSED.t001l` AS t001l
+  ${ref("t001l")} AS t001l

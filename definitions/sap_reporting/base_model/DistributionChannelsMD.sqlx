@@ -1,0 +1,19 @@
+config {
+  type: "view", // Creates a view in BigQuery. Try changing to "table" instead.
+  columns: {
+    test: "A description for the test column", // Column descriptions are pushed to BigQuery.
+  }
+}
+
+SELECT
+  TVTW.MANDT AS Client_MANDT,
+  TVTW.VTWEG AS DistributionChannel_VTWEG,
+  TVTWT.SPRAS AS Language_SPRAS,
+  TVTWT.VTEXT AS DistributionChannelName_VTEXT
+FROM
+  ${ref("tvtw")} AS TVTW
+INNER JOIN
+  ${ref("tvtwt")} AS TVTWT
+  ON
+    TVTW.MANDT = TVTWT.MANDT
+    AND TVTW.VTWEG = TVTWT.VTWEG

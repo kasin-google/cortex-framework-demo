@@ -1,0 +1,13 @@
+config {
+  type: "view", // Creates a view in BigQuery. Try changing to "table" instead.
+  columns: {
+    test: "A description for the test column", // Column descriptions are pushed to BigQuery.
+  }
+}
+
+SELECT
+  TVLST.MANDT AS Client_MANDT,
+  TVLST.SPRAS AS LanguageKey_SPRAS,
+  TVLST.LIFSP AS DefaultDeliveryBlock_LIFSP,
+  TVLST.VTEXT AS DeliveryBlockReason_VTEXT,
+FROM ${ref("tvlst")} AS TVLST

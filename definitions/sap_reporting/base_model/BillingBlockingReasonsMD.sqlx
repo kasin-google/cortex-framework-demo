@@ -1,0 +1,13 @@
+config {
+  type: "view", // Creates a view in BigQuery. Try changing to "table" instead.
+  columns: {
+    test: "A description for the test column", // Column descriptions are pushed to BigQuery.
+  }
+}
+
+SELECT
+ TVFST.MANDT AS Client_MANDT,
+ TVFST.SPRAS AS LanguageKey_SPRAS,
+ TVFST.FAKSP AS Block_FAKSP,
+ TVFST.VTEXT AS BillingBlockReason_VTEXT,
+FROM ${ref("tvfst")} AS TVFST

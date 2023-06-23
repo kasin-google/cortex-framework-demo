@@ -1,0 +1,19 @@
+config {
+  type: "view", // Creates a view in BigQuery. Try changing to "table" instead.
+  columns: {
+    test: "A description for the test column", // Column descriptions are pushed to BigQuery.
+  }
+}
+
+SELECT
+  TSPA.mandt AS Client_MANDT,
+  TSPA.spart AS Division_SPART,
+  TSPAT.spras AS LanguageKey_SPRAS,
+  TSPAT.vtext AS DivisionName_VTEXT
+FROM
+  ${ref("tspa")} AS TSPA
+LEFT JOIN
+  ${ref("tspat")} AS TSPAT
+  ON
+    TSPA.MANDT = TSPAT.MANDT
+    AND TSPA.SPART = TSPAT.SPART

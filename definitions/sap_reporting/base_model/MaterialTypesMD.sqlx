@@ -4,6 +4,7 @@ config {
     test: "A description for the test column", // Column descriptions are pushed to BigQuery.
   }
 }
+
 SELECT
   T134.MANDT AS Client_MANDT,
   T134.MTART AS MaterialType_MTART,
